@@ -128,22 +128,10 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=MDLSE,
 }
 
 cl2=c( "forestgreen","violetred4")
-RawData<-read.csv("/Users/Karmacharya/Documents/22q11ds_08282017/Dataset_inlong.csv", header=TRUE)
+RawData<-read.csv("Dataset_inlong.csv", header=TRUE)
 Data_range=subset(RawData, Diffusion %in% c("NoofFibers") & Hand %in% c("Right")& group %in% c("Two", "One")& Hemi %in% c("Left", "Right") & Region %in% c("SMG")) 
 min_val=min(Data_range$Values, na.rm=TRUE)
 max_val=max(Data_range$Values, na.rm=TRUE)
-#min_val=min_val-0.05  ##forAD##
-#max_val=max_val+0.05  ##forAD##
-#min_val=min_val-0.0001 ##fortrace##
-#max_val=max_val+0.0001 ##fortrace##
-#min_val=min_val-0.05  ##forRD##
-#max_val=max_val+0.05 ##forRD##
-#min_val=min_val-0.05  ##forFA##
-#max_val=max_val+0.10 ##forFA##
-#min_val=min_val- 0.001 ##forVolume##
-#max_val=max_val+0.001 ##forVolume##
-min_val=min_val-15  ##forNoofFiber##
-#max_val=max_val+5 ##forNoofFiber##
 
 DataSubset_TDC<-subset(RawData, Diffusion %in% c("NoofFibers") & group %in% c("One") & Hemi %in% c("Left", "Right") &  Hand %in% c("Right")& Region %in% c("SMG"))
 
@@ -197,6 +185,6 @@ P2<-P2 + geom_boxplot(aes(colour=Hemi), size=1)+
   coord_cartesian(ylim = c(min_val, max_val))
 P2
 
-pdf("~/Documents/22q11ds_08282017/results/HEMI/GC_NoofFibers_SMG.pdf",  family="CM Roman", width=32, height=11)
+pdf("GC_NoofFibers_SMG.pdf",  family="CM Roman", width=32, height=11)
 multiplot(P1,P2, cols=2)
 dev.off()
