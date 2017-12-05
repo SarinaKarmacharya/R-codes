@@ -13,9 +13,6 @@ library(dplyr)
 library(nls2)
 loadfonts()
 
-#Create plots from already generated data
-# Tracts plots
-#data <- read.csv("~/Desktop/Tracts_BU_MGH.csv")
 
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   require(grid)
@@ -111,8 +108,7 @@ quadraticNLSModel <- function(measure){
 SavePlotPoiss <- function(coeff_poiss, measure,type){
   age <- c(4:27)
   color = c("blue","green","red","dimgrey","black","orange","purple","steelblue4")
-  #color=c("chocolate4", "#FF7300", "steelblue4", "#B739FF", "#038C0A","ivory", "maroon", "dimgrey")
-  #color=c("#0D033F", "#2D4BFF", "#FF7300", "#FF002E", "#B739FF", "#038C0A", "#000000", "#B739FF", "#038C0A")
+
   tracts <- c("CC","CB","SLF ||","AnteriorLimbofInternalCapsule","PosteriorLimbofInternalCapsule","SLF |||","AnteriorCommissure","ArcuateFasciculus")
   
   if (type == c("FAt")){
@@ -201,7 +197,7 @@ SavePlotPoiss <- function(coeff_poiss, measure,type){
     j <- 1
     for (i in seq(1,24,by = 3)){
       predicted_measure[1:24,i] <- FW[i+2] + FW[i]*age*exp(-(FW[i+1]*age))
-      #lines(age,predicted_measure,type='l', col =color[j], lwd=1.5)
+
       j <- j+1
     }
     g=predicted_measure[ , colSums(is.na(predicted_measure)) == 0]
