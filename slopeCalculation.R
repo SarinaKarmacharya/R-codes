@@ -1,4 +1,4 @@
-cfw<-read.csv("/Users/Karmacharya/Documents/NEONATE-FINAL_july102016/neonate_final/RAW_DATA/RTOP.csv")
+cfw<-read.csv("RTOP.csv")
 
 one<- cfw[cfw$subject== "one",]
 zero<- cfw[cfw$subject == "zero",]
@@ -23,4 +23,4 @@ colnames(store)=c("ODI","NA", "CC_1",	"CC_2",	"ALIC_3", 	"ALIC_4",	"PLIC_5",	"PL
 row.names(store)=c( "se", "slope", "t-value")
 store2=t(store)
 
-write.csv(store2, "/Users/Karmacharya/Documents/NEONATE-FINAL_july102016/neonate_final/LinearRegression/RTOP_LM.csv")
+write.csv(store2, "LinearRegression/RTOP_LM.csv")
