@@ -129,7 +129,7 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=MDLSE,
 }
 
 cl2=c( "#FE1E26", "#0D8B0F")
-RawData<- read.csv("/Users/Karmacharya/Documents/NEONATE-FINAL_july102016/RESI-COM-DATA_final_data_AD.csv", header=T)
+RawData<- read.csv("RESI-COM-DATA_final_data_AD.csv", header=T)
 Data_range=subset(RawData, Test %in% c("ODI") & Region %in% c("CC", "IFOF", "SFOF", "UF", "SLF"))
 min_val=min(Data_range$Values)
 max_val=max(Data_range$Values)
@@ -138,9 +138,7 @@ DataSubset_TDC<-subset(RawData, Test %in% c("ODI") & Hemisphere %in% c("Left") &
 
 
 
-#RawDataN <- summarySE(DataSubset_TDC, measurevar="Values", groupvars=c("Subject", "Test", "Region", "Hemisphere"))
 
-#RawDataN2 <- summarySE(RawData, measurevar="SLF_26", groupvars=c("subject"))
 P1<-ggplot(DataSubset_TDC,aes(x=Region, y=Values, fill=Subject))
 P1<-P1 + geom_boxplot(aes(colour=Subject), size=0.5) +
   labs(y= "ODI")+
@@ -160,7 +158,7 @@ P2<-P2 + geom_boxplot(aes(color=Subject), size=0.5) +
   theme(legend.title=element_blank(),legend.text=element_text(size=45), legend.key.width = unit(1, "cm"), legend.key.height = unit(2, "cm"), plot.margin=unit(c(1,0,2.5,1), "lines"))+coord_cartesian(ylim = c(min_val, max_val))
 
 P2
-pdf("/Users/Karmacharya/Documents/NEONATE-FINAL_july102016/GC_ODI.pdf",  family="CM Roman", width=32, height=11)
+pdf("GC_ODI.pdf",  family="CM Roman", width=32, height=11)
 multiplot(P1,P2, cols=2)
 dev.off()
 
